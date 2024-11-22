@@ -31,14 +31,24 @@ if(!empty($_POST)){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Youtube remake</title>
+    <style>
+        .bericht{
+            background: grey;
+            box-shadow: 2px 2px 2px black;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 15px;
+        }
+
+        #review{
+           
+        }
+
+    </style>
 </head>
 <body>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=twI61ZGDECBr4ums" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-    <h2>Hieronder komen reacties</h2>
-    <p>Maak hier je eigen pagina van aan de hand van de opdracht</p>
-
-    <form action="" method="POST">
+    <iframe id="review" width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=twI61ZGDECBr4ums" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <form action="" method="POST">
 
 
 <fieldset>
@@ -50,16 +60,28 @@ if(!empty($_POST)){
 </label><br>
 <label for="commentaar">
     <textarea name="commentaar" id="commentaar" rows="3" cols="10" placeholder="Laat een leuk bericht achter..."></textarea>
-</label>
+</label><br>
+<input type="submit" value="verzenden">
 </fieldset>
 
 </form>
 
+    <h2>Hieronder komen reacties</h2>
+    <p>Maak hier je eigen pagina van aan de hand van de opdracht</p>
+
+   
 </body>
 </html>
 
 <?php
 $con->close();
+for($i = 0; $i < count($getReactions); $i++) {
+    echo("<div class='bericht'>");
+    echo''. $getReactions[$i]['name'] .' - ';
+    echo''. $getReactions[$i]['message'] .'<br>';
+    echo("</div>");
+    
+}
 ?>
 
 <!-- <div aria-required="">
