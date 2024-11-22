@@ -10,9 +10,9 @@ if(!empty($_POST)){
 
     //dit is een voorbeeld array.  Deze waardes moeten erin staan.
     $postArray = [
-        'name' => "Ieniminie",
-        'email' => "ieniminie@sesamstraat.nl",
-        'message' => "Geweldig dit"
+        'name' => $_POST['naam'],
+        'email' => $_POST['email'],
+        'message' => $_POST['commentaar']
     ];
 
     $setReaction = Reactions::setReaction($postArray);
@@ -37,9 +37,40 @@ if(!empty($_POST)){
 
     <h2>Hieronder komen reacties</h2>
     <p>Maak hier je eigen pagina van aan de hand van de opdracht</p>
+
+    <form action="" method="POST">
+
+
+<fieldset>
+<label
+ for="naam">Naam <input type="text" name="naam" id="naam" placeholder="Hier komt de naam" required>
+</label><br>
+<label
+ for="email">Email <input type="email" name="email" id="email" placeholder="Hier komt de email" required >
+</label><br>
+<label for="commentaar">
+    <textarea name="commentaar" id="commentaar" rows="3" cols="10" placeholder="Laat een leuk bericht achter..."></textarea>
+</label>
+</fieldset>
+
+</form>
+
 </body>
 </html>
 
 <?php
 $con->close();
 ?>
+
+<!-- <div aria-required="">
+    naam: <input type="text" name="naam" placeholder="vul hier je naam in">
+</div>
+
+<div>
+    email: <input type="text" name="email" placeholder="vul hier je email in">
+</div>
+
+<div>
+    <textarea name="commentaar" cols="30" rows="10" placeholder="vul hier een bericht..."></textarea>
+</div>
+<input type="submit" value="verzenden"> -->
